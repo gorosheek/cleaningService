@@ -9,6 +9,9 @@ npm i
 либо вы можете поставить свои данные в ```.env```
 ```
 prisma migrate up
+
+//коммент от Нади: у меня сработало npx prisma migrate dev
+//если вы запускаете бд через докер, то держите docker run --name cleaning -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=0000 -e POSTGRES_DB=CleaningService -d postgres
 ```
 
 Запуск
