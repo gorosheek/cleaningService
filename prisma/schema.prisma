@@ -7,7 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  email              String      @unique
-  user_id            Int         @id @unique @default(autoincrement())
+model Order{
+  id                 String      @id @default(uuid()) @db.Uuid
+  status_id          String      @db.Uuid
+  customer_id        String      @db.Uuid
+  address            String
+  description        String
+
+  Customer           Customer    @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Status             Status      @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Status{
+  id                 String      @id @default(uuid()) @db.Uuid
+  title              String      @unique
+  description        String
+
+  Order              Order[]
+}
+
+model Customer{
+  id                 String      @id @default(uuid()) @db.Uuid
+  phone              String      @unique
+  first_name         String
+  last_name          String
+
+  Order              Order[]
 }
