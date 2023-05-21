@@ -9,21 +9,12 @@ datasource db {
 
 model Order{
   id                 String      @id @default(uuid()) @db.Uuid
-  status_id          String      @db.Uuid
+  status             Status_Order      @default(BOOKED)
   customer_id        String      @db.Uuid
   address            String
   description        String
 
   Customer           Customer    @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  Status             Status      @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model Status{
-  id                 String      @id @default(uuid()) @db.Uuid
-  title              String      @unique
-  description        String
-
-  Order              Order[]
 }
 
 model Customer{
@@ -33,4 +24,10 @@ model Customer{
   last_name          String
 
   Order              Order[]
+}
+
+enum Status_Order{
+  BOOKED
+  CLEAN_UP
+  COMPLETED
 }
