@@ -10,6 +10,7 @@ export const test1 = async (req, res) => {
     }
 }
 
+
 export const test2 = async (req, res) => {
     try {
         let cus = new CustomerDTO(1, 89630857714, 'Biba', 'Booba')

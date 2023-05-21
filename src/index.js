@@ -1,10 +1,10 @@
-// noinspection JSCheckFunctionSignatures
+//noinspection JSCheckFunctionSignatures
 
 import express from "express"
 import cors from 'cors'
 import router from "./routes/api-routes.js";
 import swaggerUi from "swagger-ui-express";
-import swaggerDoc from "./swagger/swagger.json" assert {type: "json"};
+/*import swaggerDoc from "./swagger/swagger.json" assert {type: "json"};*/
 import generateSwagger from "./swagger/swagger.js";
 
 const app = express();
@@ -24,7 +24,7 @@ app.use(cors(
 ));
 
 app.use(router);
-generateSwagger().then(() => {
+/*generateSwagger().then(() => {
     app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-})
+})*/
 app.listen(PORT, () => console.log(`Server start http://localhost:${PORT}`));
