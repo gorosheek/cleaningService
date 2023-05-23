@@ -3,9 +3,9 @@
 import express from "express"
 import cors from 'cors'
 import router from "./routes/api-routes.js";
-import swaggerUi from "swagger-ui-express";
-/*import swaggerDoc from "./swagger/swagger.json" assert {type: "json"};*/
 import generateSwagger from "./swagger/swagger.js";
+import { readFile } from 'fs/promises';
+import swaggerUi from "swagger-ui-express";
 
 const app = express();
 const PORT = process.env.PORT || 3001
@@ -24,7 +24,8 @@ app.use(cors(
 ));
 
 app.use(router);
-/*generateSwagger().then(() => {
+generateSwagger().then(async () => {
+    const swaggerDoc = JSON.parse(await readFile("./src/swagger/swagger.json", "utf8"));
     app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-})*/
+})
 app.listen(PORT, () => console.log(`Server start http://localhost:${PORT}`));
