@@ -6,5 +6,7 @@ const router = Router()
 
 router.post('/order', OrderController.create)
 router.post('/changeStatusToBooked', OrderController.changeStatusToBooked)
+router.post('/changeStatusToCleanUp', OrderController.changeStatusToCleanUp)
+router.post('/changeStatusToCompleted', OrderController.changeStatusToCompleted)
 
 export default router

@@ -19,8 +19,39 @@ class OrderController{
     async changeStatusToBooked(req, res){
         try{
             const {order_id} = req.body
-            //TODO
             const status = Status_Order.BOOKED
+            const orderInfo = await OrderService.changeStatus(order_id, status)
+
+            res.status(200).json(orderInfo)
+        }
+        catch (e){
+            console.log(e)
+            res.status(500).json(e)
+        }
+
+    }
+
+    async changeStatusToCleanUp(req, res){
+        try{
+            const {order_id} = req.body
+            const status = Status_Order.CLEAN_UP
+            console.log(status)
+            const orderInfo = await OrderService.changeStatus(order_id, status)
+            console.log(orderInfo)
+
+            res.status(200).json(orderInfo)
+        }
+        catch (e){
+            console.log(e)
+            res.status(500).json(e)
+        }
+
+    }
+
+    async changeStatusToCompleted(req, res){
+        try{
+            const {order_id} = req.body
+            const status = Status_Order.COMPLETED
             const orderInfo = await OrderService.changeStatus(order_id, status)
 
             res.status(200).json(orderInfo)
