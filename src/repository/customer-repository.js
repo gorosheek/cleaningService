@@ -14,6 +14,17 @@ class CustomerRepository{
         }
     }
 
+    async getCustomerById(id){
+        const map = await prisma.customer.findUnique({where: {id: id}})
+        if(!map) {
+            return map
+        }
+        else{
+            return new CustomerDTO(map)
+        }
+    }
+
+
     async createCustomer(data){
         const map = await prisma.customer.create({
             data: {
@@ -28,6 +39,10 @@ class CustomerRepository{
         else{
             return new CustomerDTO(map)
         }
+    }
+
+    async getAllCustomers(){
+        return await prisma.customer.findMany()
     }
 }
 export default new CustomerRepository()
