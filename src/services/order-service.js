@@ -5,7 +5,7 @@ class OrderService{
     async createOrder(customer, order)  {
         const newCustomer = await CustomerService.findCustomer(customer)
 
-        return OrderRepository.createRepository(order,newCustomer.id)
+        return OrderRepository.createOrder(order,newCustomer.id)
     }
 
 }
