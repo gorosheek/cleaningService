@@ -20,5 +20,15 @@ class OrderRepository{
             return new OrderDTO(map)
         }
     }
+
+     async updateOrder(order_id, status) {
+        const map = await prisma.order.update({ where : {id : order_id},
+            data: {
+                status: status
+            }
+        })
+
+        return new OrderDTO(map)
+    }
 }
 export default new OrderRepository()

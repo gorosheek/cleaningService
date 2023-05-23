@@ -1,6 +1,6 @@
 # cleaningService
 Для начала нужно установить пакета
-```
+```bash
 npm i
 ```
 
@@ -15,7 +15,7 @@ prisma migrate up
 ```
 
 Запуск
-```
+```bash
 npm run dev
 ```
 
@@ -23,10 +23,10 @@ npm run dev
 С бд работаем через ORM Prisma
 
 Если хотите изменить модели меняем их в файлике 
-```
+```bash
 prisma/schema.prisma
 ```
 Затем нужно прописать миграцию, она автоматически сразу встанет в бд (вместо ```init``` нужно навзвание )
-```
+```bash
  npx prisma migrate dev --name init
 ```

@@ -8,6 +8,9 @@ class OrderService{
         return await OrderRepository.createOrder(order,newCustomer.id)
     }
 
+    async changeStatus(order, status){
+        return await OrderRepository.updateOrder(order, order.id, status)
+    }
 }
 
 export default new OrderService()
