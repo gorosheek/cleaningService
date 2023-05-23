@@ -1,9 +1,10 @@
 import {PrismaClient, Status_Order} from '@prisma/client'
+import {OrderDTO} from "../dtos/models.js";
 
 const prisma = new PrismaClient()
 
 class OrderRepository{
-    async createOrder(order, customer_id) {
+    async createOrder(order, customer_id) : OrderDTO {
         return prisma.order.create({
             data: {
                 status: Status_Order.BOOKED,
