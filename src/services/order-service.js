@@ -4,8 +4,8 @@ import OrderRepository from "../repository/order-repository.js";
 class OrderService{
     async createOrder(customer, order)  {
         const newCustomer = await CustomerService.findCustomer(customer)
-
-        return OrderRepository.createOrder(order,newCustomer.id)
+        console.log(order,newCustomer)
+        return await OrderRepository.createOrder(order,newCustomer.id)
     }
 
 }

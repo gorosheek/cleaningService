@@ -1,26 +1,26 @@
 export class OrderDTO {
-    constructor(id, statusId, customerId, address, description) {
-        this.id = id;
-        this.statusId = statusId;
-        this.customerId = customerId;
-        this.address = address;
-        this.description = description;
+    constructor(data) {
+        this.id = data.id;
+        this.status = data.status;
+        this.customer_id = data.customer_id;
+        this.address = data.address;
+        this.description = data.description;
     }
 }
 
 export class StatusDTO {
-    constructor(id, title, description) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
+    constructor(data) {
+        this.id = data.id;
+        this.title = data.title;
+        this.description = data.description;
     }
 }
 
 export class CustomerDTO {
-    constructor(id, phone, firstName, lastName){
-        this.id = id;
-        this.phone = phone;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    constructor(data){
+        this.id = data.id;
+        this.phone = data.phone;
+        this.first_name = data.first_name;
+        this.last_name = data.last_name;
     }
 }

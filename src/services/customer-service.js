@@ -11,7 +11,7 @@ class CustomerService{
     }
 
     async createCustomer(customer){
-        return await CustomerRepository.createCustomer(customer)
+        return await CustomerRepository.createCustomer(customer);
     }
 }
 
