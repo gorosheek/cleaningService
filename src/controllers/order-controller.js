@@ -16,6 +16,10 @@ class OrderController{
 
     }
 
+    async createGatewayOrder(req, res){
+        //TODO model: CutomerCleaningOrder, DTO: CustomerCleaningOrderDTO
+    }
+
     async changeStatusToBooked(req, res){
         try{
             const {order_id} = req.body

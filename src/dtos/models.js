@@ -17,14 +17,6 @@ export class AlternateOrderDTO {
     }
 }
 
-export class AlternateOrderDTO {
-    constructor(data) {
-        this.id = data.id;
-        this.lattitude = data.lattitude;
-        this.longtitude = data.langtitude;
-        this.room_number = data.room;
-    }
-}
 
 export class CustomerCleaningOrderDTO {
     constructor(data) {
