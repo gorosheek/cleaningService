@@ -1,21 +1,40 @@
-import swaggerAutogen from "swagger-autogen";
-import {dirname, join} from 'path';
-import {fileURLToPath} from 'url';
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 
-const generateSwagger = () => {
-    const port = process.env.PORT || 3001;
-    const _dirname = dirname(fileURLToPath(import.meta.url));
-    const outputFile = join(_dirname, './swagger.json');
-    const endpointsFiles = [join(_dirname, '../index.js')];
-
-    const doc = {
+const options = {
+    definition: {
+        openapi: "3.0.0",
         info: {
-            title: 'cleaning service',
-            description: 'Возможно, в каком-нибудь будущем тут появится какая-нибудь информация',
+            title: "Cleaning service",
+            version: "1.0.0",
         },
-        host: `localhost:${port}`,
-        schemes: ['http', 'https'],
-    };
-    return swaggerAutogen(outputFile, endpointsFiles, doc);
+        components: {
+            securitySchemas: {
+                bearerAuth: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT",
+                },
+            },
+        },
+        security: [
+            {
+                bearerAuth: [],
+            },
+        ],
+    },
+    apis: ["./src/routes/order-router.js", "./src/routes/customer-router.js", "./src/schemas/Order.*.js"],
+};
+
+const swaggerSpec = swaggerJsdoc(options);
+
+function swaggerDocs(app) {
+    app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+    app.get("/doc.json", (req, res) => {
+        res.setHeader("Content-Type", "application/json");
+        res.send(swaggerSpec);
+    });
 }
-export default generateSwagger;
+
+export default swaggerDocs;
