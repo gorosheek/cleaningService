@@ -16,10 +16,14 @@ const router = Router()
  *      content:
  *        application/json:
  *           schema:
- *              $ref: '#/components/schemas/CreateOrder'
+ *              $ref: '#/components/schemas/ReqCreateOrder'
  *     responses:
  *      200:
  *        description: Success
+ *        content:
+ *          application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Order'
  */
 router.post('/order', OrderController.create)
 /**
@@ -33,7 +37,7 @@ router.post('/order', OrderController.create)
  *      content:
  *        application/json:
  *           schema:
- *              $ref: '#/components/schemas/OrderGetAway'
+ *              $ref: '#/components/schemas/ReqOrderGetAway'
  *     responses:
  *      200:
  *        description: Success
@@ -51,10 +55,14 @@ router.post('/orderGateway', OrderController.createGatewayOrder)
  *      content:
  *        application/json:
  *           schema:
- *              $ref: '#/components/schemas/ChangeStatusOrder'
+ *              $ref: '#/components/schemas/ReqChangeStatusOrder'
  *     responses:
  *      200:
  *        description: Success
+ *        content:
+ *          application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Order'
  */
 router.post('/changeStatusToBooked', OrderController.changeStatusToBooked)
 /**
@@ -69,10 +77,14 @@ router.post('/changeStatusToBooked', OrderController.changeStatusToBooked)
  *      content:
  *        application/json:
  *           schema:
- *              $ref: '#/components/schemas/ChangeStatusOrder'
+ *              $ref: '#/components/schemas/ReqChangeStatusOrder'
  *     responses:
  *      200:
  *        description: Success
+ *        content:
+ *          application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Order'
  */
 router.post('/changeStatusToCleanUp', OrderController.changeStatusToCleanUp)
 /**
@@ -87,10 +99,14 @@ router.post('/changeStatusToCleanUp', OrderController.changeStatusToCleanUp)
  *      content:
  *        application/json:
  *           schema:
- *              $ref: '#/components/schemas/ChangeStatusOrder'
+ *              $ref: '#/components/schemas/ReqChangeStatusOrder'
  *     responses:
  *      200:
  *        description: Success
+ *        content:
+ *          application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Order'
  */
 router.post('/changeStatusToCompleted', OrderController.changeStatusToCompleted)
 
