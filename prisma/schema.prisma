@@ -10,11 +10,19 @@ datasource db {
 model Order{
   id                 String       @id @default(uuid()) @db.Uuid
   status             Status_Order      @default(BOOKED)
-  customer_id        String      @db.Uuid
+  customer_id        String       @db.Uuid
   address            String
   description        String
 
   Customer           Customer    @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model AlternateOrder{
+  id                 String      @id @default(uuid()) @db.Uuid
+  status             Status_Order      @default(BOOKED)
+  room_number        String       @db.Uuid
+  lattitude          String
+  longtitude         String
 }
 
 model Customer{
