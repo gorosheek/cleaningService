@@ -23,6 +23,15 @@ model AlternateOrder{
   room_number        String       @db.Uuid
   lattitude          String
   longtitude         String
+  cleaning_type      String
+}
+
+model CutomerCleaningOrder{
+  id                 String      @id @default(uuid()) @db.Uuid
+  status             Status_Order      @default(BOOKED)
+  room_id            String       @db.Uuid
+  hotel_id           String
+  cleaning_type      String
 }
 
 model Customer{
