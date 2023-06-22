@@ -1,4 +1,3 @@
-import CustomerService from "./customer-service.js";
 import OrderRepository from "../repository/order-repository.js";
 
 class OrderService{
