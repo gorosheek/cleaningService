@@ -14,8 +14,7 @@ class OrderService{
             status_type: Status_Order.CLEANING,
             isCleaningRequested: isCleaningRequested
         }
-
-        const response = await OrderRepository.createOrderWithType(order)
+        const response = await OrderRepository.createOrder(order)
         await OrderInfrastructure.goToHotelService(response)
 
         return response
