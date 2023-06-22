@@ -25,6 +25,10 @@ class OrderService{
     async changeStatus(order_id, status){
         return await OrderRepository.updateOrder(order_id, status)
     }
+    
+    async getAllOrders(){
+        return await OrderRepository.getAllOrders()
+    }
 }
 
 export default new OrderService()
