@@ -2,10 +2,10 @@
   "name": "cleaningservice",
   "version": "1.0.0",
   "description": "Возможно, в каком-нибудь будущем тут появится какая-нибудь информация",
-  "main": "src/index.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
