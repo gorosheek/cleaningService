@@ -9,7 +9,7 @@ datasource db {
 
 model OldOrder{
   id                 String       @id @default(uuid()) @db.Uuid
-  status             Status_Order      @default(BOOKED)
+  status             Status_Order      @default(CLEANING)
   customer_id        String       @db.Uuid
   address            String
   description        String
@@ -19,16 +19,16 @@ model OldOrder{
 
 model Order{
   id                 String      @id @default(uuid()) @db.Uuid
-  status             Status_Order      @default(BOOKED)
-  room_number        String       @db.Uuid
-  x                  String
-  y                  String
-  order_type         Order_Type
+  status             Status_Order      @default(CLEANING)
+  room_number        String          @default("0")
+  x                  String          @default("0")
+  y                  String          @default("0")
+  order_type         Order_Type      @default(FULL)
 }
 
 model CutomerCleaningOrder{
   id                 String      @id @default(uuid()) @db.Uuid
-  status             Status_Order      @default(BOOKED)
+  status             Status_Order      @default(CLEANING)
   room_id            String       @db.Uuid
   hotel_id           String
   cleaning_type      String
@@ -40,15 +40,15 @@ model Customer{
   first_name         String
   last_name          String
 
-  Order              Order[]
+  OldOrder           OldOrder[]
 }
 
 enum Status_Order{
-  CLEANING,
+  CLEANING
   COMPLETED
 }
 
 enum Order_Type{
-  FULL,
+  FULL
   TECHNICAL
 }
