@@ -10,7 +10,7 @@ datasource db {
 model Order{
   id                 String      @id @default(uuid()) @db.Uuid
   status             Status_Order      @default(CLEANING)
-  room_number        String
+  room_number        Int
   x                  Float
   y                  Float
   order_type         Order_Type      @default(FULL)

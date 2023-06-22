@@ -69,7 +69,7 @@ router.post("/hotelOrder",OrderController.createHotelServiceOrder)
  *             schema:
  *               $ref: '#/components/schemas/Order'
  */
-router.patch("/order",OrderController.changeStatusToCompleted)
+router.patch("/hotelOrder",OrderController.changeStatusToCompleted)
 /**
  * @openapi
  * '/orders':
