@@ -19,7 +19,6 @@ app.use(cors(
     }
 ));
 console.log("slava of ukraine")
-console.log("Ева покажи 🍒 🍑 🍆")
 app.use(router);
 
 app.listen(PORT, () => {

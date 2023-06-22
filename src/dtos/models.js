@@ -1,18 +1,19 @@
-export class OrderDTO {
-    constructor(data) {
-        this.id = data.id;
-        this.status = data.status;
-        this.customer_id = data.customer_id;
-        this.address = data.address;
-        this.description = data.description;
-    }
-}
-
-export class AlternateOrderDTO {
+export class ResponseOrderDTO {
     constructor(data) {
         this.x = data.x;
         this.y = data.y;
-        this.room_number = data.room;
+        this.room_number = data.room_number;
+        this.state = data.state;
+        this.isCleaningRequested = data.isCleaningRequested;
+    }
+}
+
+export class OrderDTO {
+    constructor(data) {
+        this.x = data.x;
+        this.y = data.y;
+        this.room_number = data.room_number;
+        this.state = data.state;
     }
 }
 
@@ -35,7 +36,7 @@ export class StatusDTO {
 }
 
 export class CustomerDTO {
-    constructor(data){
+    constructor(data) {
         this.id = data.id;
         this.phone = data.phone;
         this.first_name = data.first_name;
