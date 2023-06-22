@@ -6,7 +6,7 @@ class OrderController{
     async createGatewayOrder(req, res){
         try{
             const order = req.body
-            const orderInfo = await OrderService.createOrder(order, Order_Type.TECHNICAL)
+            const orderInfo = await OrderService.createOrder(order, Order_Type.TECHNICAL, true)
 
             res.status(200).json(orderInfo)
         }
@@ -19,7 +19,7 @@ class OrderController{
     async createHotelServiceOrder(req, res){
         try{
             const order = req.body
-            const orderInfo = await OrderService.createOrder(order, Order_Type.FULL)
+            const orderInfo = await OrderService.createOrder(order, Order_Type.FULL, false)
 
             res.status(200).json(orderInfo)
         }

@@ -1,14 +1,11 @@
 import OrderRepository from "../repository/order-repository.js";
 import {Status_Order} from "@prisma/client";
+import OrderInfrastructure from "../infrastructure/order-infrastructure.js";
+import OrderController from "../controllers/order-controller.js";
 
 class OrderService{
-    // async createOrder(customer, order)  {
-    //     const newCustomer = await CustomerService.findCustomer(customer)
-    //     console.log(order,newCustomer)
-    //     return await OrderRepository.createOrder(order,newCustomer.id)
-    // }
 
-    async createOrder(data_order, type){
+    async createOrder(data_order, type, isCleaningRequested){
         const order = {
             x: data_order.longitude,
             y: data_order.latitude,
@@ -18,6 +15,7 @@ class OrderService{
         }
 
         const response = await OrderRepository.createOrderWithType(order)
+        await OrderInfrastructure.goToHotelService(response, isCleaningRequested)
 
         return response
     }
@@ -25,8 +23,7 @@ class OrderService{
     async changeStatus(order_id, status){
         return await OrderRepository.updateOrder(order_id, status)
     }
-    
-    
+
 
     async getAllOrders(){
         return await OrderRepository.getAllOrders()
