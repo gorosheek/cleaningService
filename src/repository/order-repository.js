@@ -22,8 +22,8 @@ class OrderRepository {
     }
 
     //добавление нового заказа + тип enum Order_Type{
-    //GATEWAY,
-    //HOTEL_SERVICE
+    //FULL,
+    //TECHNICAL
     //}
     //TODO доделать
     async createOrderWithType(order, order_type) {
