@@ -11,11 +11,12 @@ class OrderService{
             y: data_order.latitude,
             room_number: data_order.room_number,
             order_type: type,
-            status_type: Status_Order.CLEANING
+            status_type: Status_Order.CLEANING,
+            isCleaningRequested: isCleaningRequested
         }
 
         const response = await OrderRepository.createOrderWithType(order)
-        await OrderInfrastructure.goToHotelService(response, isCleaningRequested)
+        await OrderInfrastructure.goToHotelService(response)
 
         return response
     }

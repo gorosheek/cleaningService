@@ -50,7 +50,8 @@ class OrderRepository {
                 y: data_order.latitude,
                 room_number: data_order.room_number,
                 order_type: data_order.order_type,
-                status_type: data_order.status_type
+                status_type: data_order.status_type,
+                isCleaningRequested: data_order.isCleaningRequested
             }
         })
 
