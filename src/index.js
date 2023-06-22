@@ -19,6 +19,7 @@ app.use(cors(
     }
 ));
 console.log("slava of ukraine")
+console.log("скинь сиськи(только если ты не аня(мы не хотим ослепнуть(умереть)))")
 app.use(router);
 
 app.listen(PORT, () => {
