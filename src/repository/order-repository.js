@@ -1,5 +1,5 @@
 import {PrismaClient, Status_Order} from '@prisma/client'
-import {CustomerDTO, OrderDTO} from "../dtos/models.js";
+import {CustomerDTO, OrderDTO, ResponseOrderDTO} from "../dtos/models.js";
 
 const prisma = new PrismaClient()
 
@@ -54,7 +54,7 @@ class OrderRepository {
             }
         })
 
-        return new OrderDTO(map)
+        return new ResponseOrderDTO(map)
     }
 
     async updateOrder(order_id, status) {

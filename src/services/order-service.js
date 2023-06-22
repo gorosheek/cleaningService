@@ -17,7 +17,9 @@ class OrderService{
             status_type: Status_Order.CLEANING
         }
 
-        return await OrderRepository.createOrderWithType(order)
+        const response = await OrderRepository.createOrderWithType(order)
+
+        return response
     }
 
     async changeStatus(order_id, status){
