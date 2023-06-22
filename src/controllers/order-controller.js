@@ -44,6 +44,17 @@ class OrderController{
         }
     }
 
+    async getAllOrders(req, res){
+        try{
+            const allOrders = await OrderService.getAllOrders()
+            res.status(200).json(allOrders)
+        }
+        catch(e){
+            console.log(e)
+            res.status(500).json(e)
+        }
+    }
+
 }
 
 export default new OrderController()
