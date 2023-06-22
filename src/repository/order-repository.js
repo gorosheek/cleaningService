@@ -69,7 +69,7 @@ class OrderRepository {
     }
 
     async getAllOrders(){
-        return await prisma.order
+        return await prisma.order.findMany()
     }
 }
 
