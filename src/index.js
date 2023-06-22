@@ -18,7 +18,8 @@ app.use(cors(
         allowedHeaders: "*",
     }
 ));
-
+console.log("slava of ukraine")
+console.log("Ева покажи 🍒 🍑 🍆")
 app.use(router);
 
 app.listen(PORT, () => {
