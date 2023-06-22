@@ -1,9 +1,9 @@
 export class ResponseOrderDTO {
     constructor(data) {
-        this.x = data.x;
-        this.y = data.y;
-        this.room_number = data.room_number;
-        this.state = data.state;
+        this.hotelLatitude = data.x;
+        this.hotelLongitude = data.y;
+        this.roomNumber = data.room_number;
+        this.state = data.status;
         this.isCleaningRequested = data.isCleaningRequested;
     }
 }
