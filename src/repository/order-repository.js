@@ -4,44 +4,6 @@ import {CustomerDTO, OrderDTO, ResponseOrderDTO} from "../dtos/models.js";
 const prisma = new PrismaClient()
 
 class OrderRepository {
-    // async createOrder(order, customer_id) {
-    //     const map = await prisma.order.create({
-    //         data: {
-    //             status: Status_Order.BOOKED,
-    //             customer_id: customer_id,
-    //             address: order.address,
-    //             description: order.description
-    //         }
-    //     })
-    //     if (!map) {
-    //         return map
-    //     } else {
-    //         return new OrderDTO(map)
-    //     }
-    // }
-
-    //добавление нового заказа + тип enum Order_Type{
-    //FULL,
-    //TECHNICAL
-    //}
-    //TODO доделать
-    async createOrderWithType(order, order_type) {
-        const map = await prisma.order.create({
-            data: {
-                status: Status_Order.BOOKED,
-                room_number: order.room_number,
-                x: order.x,
-                y: order.y,
-                order_type: {order_type}
-            }
-        })
-        // if(!map) {
-        //     return map
-        // }
-        // else{
-        //     return new OrderDTO(map)
-        // }
-    }
 
     async createOrder(data_order) {
         const map = await prisma.order.create({

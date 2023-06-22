@@ -23,7 +23,7 @@ const router = Router()
  *        content:
  *          application/json:
  *             schema:
- *               $ref: '#/components/schemas/Order'
+ *               $ref: '#/components/schemas/ResHotelOrder'
  */
 router.post("/gatewayOrder",OrderController.createGatewayOrder)
 /**
@@ -45,7 +45,7 @@ router.post("/gatewayOrder",OrderController.createGatewayOrder)
  *        content:
  *          application/json:
  *             schema:
- *               $ref: '#/components/schemas/Order'
+ *               $ref: '#/components/schemas/ResHotelOrder'
  */
 router.post("/hotelOrder",OrderController.createHotelServiceOrder)
 /**
@@ -67,7 +67,7 @@ router.post("/hotelOrder",OrderController.createHotelServiceOrder)
  *        content:
  *          application/json:
  *             schema:
- *               $ref: '#/components/schemas/Order'
+ *               $ref: '#/components/schemas/ResHotelOrder'
  */
 router.patch("/hotelOrder",OrderController.changeStatusToCompleted)
 /**

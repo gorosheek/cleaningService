@@ -22,8 +22,8 @@ class OrderService{
 
     async changeStatus(order_id, status){
         const response = await OrderRepository.updateOrder(order_id, status)
-        console.log(response)
         await OrderInfrastructure.goToHotelService(response)
+        return response
     }
 
 

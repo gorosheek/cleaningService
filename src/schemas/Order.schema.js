@@ -50,4 +50,22 @@
  *        order_id:
  *          type: string
  *          default: "6fe69112-76e2-45db-b058-bec4f0e2927c"
+ *    ResHotelOrder:
+ *      type: object
+ *      properties:
+ *        hotelLatitude:
+ *          type: Number
+ *          default: 10
+ *        hotelLongitude:
+ *          type: Number
+ *          default: 10
+ *        roomNumber:
+ *          type: Number
+ *          default: 10
+ *        state:
+ *          type: String
+ *          default: "COMPLETED"
+ *        isCleaningRequested:
+ *          type: Bool
+ *          default: true
  */
