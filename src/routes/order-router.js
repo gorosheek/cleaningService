@@ -64,6 +64,8 @@ router.post('/orderGateway', OrderController.createGatewayOrder)
  *             schema:
  *               $ref: '#/components/schemas/Order'
  */
+
+router.post('/orderHotelService', OrderController.createHotelServiceOrder)
 router.post('/changeStatusToBooked', OrderController.changeStatusToBooked)
 /**
  * @openapi

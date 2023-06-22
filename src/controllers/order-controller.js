@@ -1,5 +1,5 @@
 import OrderService from "../services/order-service.js";
-import {Status_Order} from "@prisma/client";
+import {Status_Order, Order_Type} from "@prisma/client";
 
 class OrderController{
     async create(req, res) {
@@ -17,7 +17,29 @@ class OrderController{
     }
 
     async createGatewayOrder(req, res){
-        //TODO model: CutomerCleaningOrder, DTO: CustomerCleaningOrderDTO
+        try{
+            const order = req.body
+            const orderInfo = await OrderService.createOrder(order, Order_Type.TECHNICAL)
+
+            res.status(200).json(orderInfo)
+        }
+        catch (e){
+            console.log(e)
+            res.status(500).json(e)
+        }
+    }
+
+    async createHotelServiceOrder(req, res){
+        try{
+            const order = req.body
+            const orderInfo = await OrderService.createOrder(order, Order_Type.FULL)
+
+            res.status(200).json(orderInfo)
+        }
+        catch (e){
+            console.log(e)
+            res.status(500).json(e)
+        }
     }
 
     async changeStatusToBooked(req, res){

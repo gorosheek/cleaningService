@@ -1,9 +1,9 @@
-import {PrismaClient, Status_Order} from '@prisma/client'
-import {CustomerDTO, OrderDTO} from "../dtos/models.js";
+import { PrismaClient, Status_Order } from '@prisma/client'
+import { CustomerDTO, OrderDTO } from "../dtos/models.js";
 
 const prisma = new PrismaClient()
 
-class OrderRepository{
+class OrderRepository {
     async createOrder(order, customer_id) {
         const map = await prisma.order.create({
             data: {
@@ -13,16 +13,40 @@ class OrderRepository{
                 description: order.description
             }
         })
-        if(!map) {
+        if (!map) {
             return map
         }
-        else{
+        else {
             return new OrderDTO(map)
         }
     }
 
-     async updateOrder(order_id, status) {
-        const map = await prisma.order.update({ where : {id : order_id},
+    //добавление нового заказа + тип enum Order_Type{
+    //GATEWAY,
+    //HOTEL_SERVICE
+    //}
+    //TODO доделать
+    async createOrderWithType(order, order_type) {
+        const map = await prisma.order.create({
+            data: {
+                status: Status_Order.BOOKED,
+                room_number: order.room_number,
+                x: order.x,
+                y: order.y,
+                order_type: { order_type }
+            }
+        })
+        // if(!map) {
+        //     return map
+        // }
+        // else{
+        //     return new OrderDTO(map)
+        // }
+    }
+
+    async updateOrder(order_id, status) {
+        const map = await prisma.order.update({
+            where: { id: order_id },
             data: {
                 status: status
             }

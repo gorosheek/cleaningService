@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Order{
+model OldOrder{
   id                 String       @id @default(uuid()) @db.Uuid
   status             Status_Order      @default(BOOKED)
   customer_id        String       @db.Uuid
@@ -17,13 +17,13 @@ model Order{
   Customer           Customer    @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model AlternateOrder{
+model Order{
   id                 String      @id @default(uuid()) @db.Uuid
   status             Status_Order      @default(BOOKED)
   room_number        String       @db.Uuid
-  lattitude          String
-  longtitude         String
-  cleaning_type      String
+  x                  String
+  y                  String
+  order_type         Order_Type
 }
 
 model CutomerCleaningOrder{
@@ -44,7 +44,11 @@ model Customer{
 }
 
 enum Status_Order{
-  BOOKED
-  CLEAN_UP
+  CLEANING,
   COMPLETED
+}
+
+enum Order_Type{
+  FULL,
+  TECHNICAL
 }

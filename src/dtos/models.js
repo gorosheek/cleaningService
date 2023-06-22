@@ -10,9 +10,8 @@ export class OrderDTO {
 
 export class AlternateOrderDTO {
     constructor(data) {
-        this.id = data.id;
-        this.lattitude = data.lattitude;
-        this.longtitude = data.langtitude;
+        this.x = data.x;
+        this.y = data.y;
         this.room_number = data.room;
     }
 }
