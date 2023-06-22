@@ -26,6 +26,8 @@ class OrderService{
         return await OrderRepository.updateOrder(order_id, status)
     }
     
+    
+
     async getAllOrders(){
         return await OrderRepository.getAllOrders()
     }
