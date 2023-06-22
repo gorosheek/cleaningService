@@ -65,11 +65,17 @@ class OrderRepository {
             }
         })
 
-        return new OrderDTO(map)
+        return new ResponseOrderDTO(map)
     }
 
     async getAllOrders(){
         return await prisma.order.findMany()
+    }
+    
+    async findOrderById(id){        
+        return await prisma.order.findFirst({
+            where:{id: id}
+        })
     }
 }
 

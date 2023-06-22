@@ -21,12 +21,17 @@ class OrderService{
     }
 
     async changeStatus(order_id, status){
-        return await OrderRepository.updateOrder(order_id, status)
+        const response = await OrderRepository.updateOrder(order_id, status)
+        await OrderInfrastructure.goToHotelService(response)
     }
 
 
     async getAllOrders(){
         return await OrderRepository.getAllOrders()
+    }
+
+    async getOrderById(id){
+        return await OrderRepository.getOrderById(id)
     }
 }
 

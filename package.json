@@ -24,6 +24,7 @@
   "homepage": "https://github.com/gorosheek/cleaningService#readme",
   "dependencies": {
     "@prisma/client": "4.14.1",
+    "axios": "^1.4.0",
     "cors": "2.8.5",
     "express": "4.18.2",
     "express-swagger-generator": "1.1.17",
