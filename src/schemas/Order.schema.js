@@ -10,49 +10,38 @@
  *          default: "f056aab7-df93-4262-b563-e2d9068b0a3b"
  *        status:
  *          type: string
- *          default: "BOOKED"
- *        customer_id:
+ *          default: "CLEANING"
+ *        room_number:
+ *          type: number
+ *          default: 101
+ *        x:
+ *          type: number
+ *          default: 10
+ *        y:
+ *          type: number
+ *          default: 10
+ *        order_type:
  *          type: string
- *          default: "f089594c-93ba-4270-a608-905c822ff9a3"
- *        address:
- *          type: string
- *          default: "bratyev kashirinix 129"
- *        description:
- *          type: string
- *          default: "grand hotel"
- *    ReqOrder:
- *      type: object
- *      required:
- *        - address
- *        - description
- *      properties:
- *        address:
- *          type: string
- *          default: "bratyev kashirinix 129"
- *        description:
- *          type: string
- *          default: "grand hotel"
- *    ReqCreateOrder:
- *      type: object
- *      required:
- *        - customer
- *        - order
- *      properties:
- *        customer:
- *          type: ReqCustomer
- *          $ref: '#/components/schemas/ReqCustomer'
- *        order:
- *          type: ReqOrder
- *          $ref: '#/components/schemas/ReqOrder'
+ *          default: Full
+ *        isCleaningRequested:
+ *          type: bool
+ *          default: true
  *    ReqOrderGetAway:
  *      type: object
+ *      required:
+ *         - latitude
+ *         - longitude
+ *         - room_number
  *      properties:
- *        passport:
- *          type: string
- *        hotel_id:
- *          type: string
- *        room_id:
- *          type: string
+ *        latitude:
+ *          type: number
+ *          default: 10
+ *        longitude:
+ *          type: number
+ *          default: 10
+ *        room_number:
+ *          type: number
+ *          default: 101
  *    ReqChangeStatusOrder:
  *      type: object
  *      required:

@@ -6,17 +6,17 @@ const router = Router()
 
 /**
  * @openapi
- * '/order':
+ * '/gatewayOrder':
  *  post:
  *     tags:
  *     - Order
- *     summary: Create new Order
+ *     summary: Create new Order for Gateway
  *     requestBody:
  *      required: true
  *      content:
  *        application/json:
  *           schema:
- *              $ref: '#/components/schemas/ReqCreateOrder'
+ *              $ref: '#/components/schemas/ReqOrderGetAway'
  *     responses:
  *      200:
  *        description: Success
@@ -25,7 +25,51 @@ const router = Router()
  *             schema:
  *               $ref: '#/components/schemas/Order'
  */
-
+router.post("/gatewayOrder",OrderController.createGatewayOrder)
+/**
+ * @openapi
+ * '/hotelOrder':
+ *  post:
+ *     tags:
+ *     - Order
+ *     summary: Create new Order for Hotel service
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *           schema:
+ *              $ref: '#/components/schemas/ReqOrderGetAway'
+ *     responses:
+ *      200:
+ *        description: Success
+ *        content:
+ *          application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Order'
+ */
+router.post("/hotelOrder",OrderController.createHotelServiceOrder)
+/**
+ * @openapi
+ * '/hotelOrder':
+ *  patch:
+ *     tags:
+ *     - Order
+ *     summary: Change order status to complete
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *           schema:
+ *              $ref: '#/components/schemas/ReqChangeStatusOrder'
+ *     responses:
+ *      200:
+ *        description: Success
+ *        content:
+ *          application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Order'
+ */
+router.patch("/order",OrderController.changeStatusToCompleted)
 /**
  * @openapi
  * '/orders':
@@ -38,7 +82,9 @@ const router = Router()
  *        content:
  *          application/json:
  *             schema:
- *               $ref: '#/components/schemas/Order'
+ *                type: array
+ *                items:
+ *                    $ref: '#/components/schemas/Order'
  */
 router.get('/orders', OrderController.getAllOrders)
 
