@@ -67,6 +67,10 @@ class OrderRepository {
 
         return new OrderDTO(map)
     }
+
+    async getAllOrders(){
+        return await prisma.order
+    }
 }
 
 export default new OrderRepository()
