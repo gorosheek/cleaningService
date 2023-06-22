@@ -25,9 +25,7 @@ const options = {
     },
     apis: [
         "./src/routes/order-router.js",
-        "./src/routes/customer-router.js",
         "./src/schemas/Order.*.js",
-        "./src/schemas/Customer.*.js"
     ],
 };
 
