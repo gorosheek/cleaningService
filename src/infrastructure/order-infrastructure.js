@@ -2,7 +2,11 @@ import axios from "axios"
 
 class OrderInfrastructure {
     async goToHotelService(order) {
-        let state = "Clean"
+        let state
+        if (order.state === "CLEANING")
+            state = "CleanRequested"
+        else
+            state = "Clean"
         try {
             await axios.put(`http://un1ver5e.keenetic.link:5000/Hotels/room/${state}`,
                 {
@@ -10,7 +14,7 @@ class OrderInfrastructure {
                     hotelLongitude: order.hotelLongitude,
                     roomNumber: order.roomNumber,
                     state: state,
-                    isCleaningRequested: true
+                    isCleaningRequested: order.isCleaningRequested
                 })
             return true
         } catch (error) {

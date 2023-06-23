@@ -14,6 +14,7 @@ model Order{
   x                  Float
   y                  Float
   order_type         Order_Type      @default(FULL)
+  isCleaningRequested Boolean
 }
 
 enum Status_Order{

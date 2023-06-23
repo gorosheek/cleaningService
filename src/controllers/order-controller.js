@@ -39,8 +39,11 @@ class OrderController {
             const {order_id} = req.body
             const status = Status_Order.COMPLETED
             const orderInfo = await OrderService.changeStatus(order_id, status)
-
-            res.status(200).json(orderInfo)
+            if (orderInfo.message) {
+                res.status(400).json(orderInfo)
+            } else {
+                res.status(200).json(orderInfo)
+            }
         } catch (e) {
             console.log(e)
             res.status(500).json(e)
