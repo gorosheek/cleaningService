@@ -1,37 +1,51 @@
 import OrderRepository from "../repository/order-repository.js";
 import {Status_Order} from "@prisma/client";
 import OrderInfrastructure from "../infrastructure/order-infrastructure.js";
-import OrderController from "../controllers/order-controller.js";
 
-class OrderService{
+class OrderService {
 
-    async createOrder(data_order, type, isCleaningRequested){
+    async createOrderHotel(data_order, type) {
         const order = {
-            x: data_order.longitude,
-            y: data_order.latitude,
+            x: data_order.latitude,
+            y: data_order.longitude,
             room_number: data_order.room_number,
             order_type: type,
-            status_type: Status_Order.CLEANING,
-            isCleaningRequested: isCleaningRequested
+            status_type: Status_Order.CLEANING
         }
-        const response = await OrderRepository.createOrder(order)
-        await OrderInfrastructure.goToHotelService(response)
-
-        return response
+        return await OrderRepository.createOrder(order)
     }
 
-    async changeStatus(order_id, status){
+    async createOrderGetAway(data_order, type) {
+        const order = {
+            x: data_order.latitude,
+            y: data_order.longitude,
+            room_number: data_order.room_number,
+            order_type: type,
+            status_type: Status_Order.CLEANING
+        }
+        const response = await OrderRepository.createOrder(order)
+        const isOk = await OrderInfrastructure.goToHotelService(response)
+        if (isOk) {
+            return response
+        } else {
+            return {
+                message: "room not found"
+            }
+        }
+    }
+
+    async changeStatus(order_id, status) {
         const response = await OrderRepository.updateOrder(order_id, status)
         await OrderInfrastructure.goToHotelService(response)
         return response
     }
 
 
-    async getAllOrders(){
+    async getAllOrders() {
         return await OrderRepository.getAllOrders()
     }
 
-    async getOrderById(id){
+    async getOrderById(id) {
         return await OrderRepository.getOrderById(id)
     }
 }

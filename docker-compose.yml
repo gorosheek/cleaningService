@@ -24,6 +24,3 @@ services:
       - postgres
     ports:
       - "3001:3001"
-
-
-
