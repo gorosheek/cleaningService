@@ -13,13 +13,13 @@ services:
       - "5432:5432"
 
   cleaning-service:
-    build: ./src
+    build: ./
     restart: always
-    container_name: cleaning
+    container_name: service
     command:
       - sh
       - '-c'
-      - 'npx prisma migrate dev && node index.js'
+      - 'sleep 5 && npx prisma db push && node index.js'
     depends_on:
       - postgres
     ports:

@@ -1,7 +1,7 @@
 import express from "express"
 import cors from 'cors'
-import router from "./routes/api-routes.js";
-import swaggerDocs from "./swagger/swagger.js";
+import router from "./src/routes/api-routes.js";
+import swaggerDocs from "./src/swagger/swagger.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001
