@@ -1,15 +1,14 @@
 import OrderRepository from "../repository/order-repository.js";
 import {Status_Order} from "@prisma/client";
 import OrderInfrastructure from "../infrastructure/order-infrastructure.js";
-import {ResponseOrderDTO} from "../dtos/models.js";
 
 class OrderService {
 
     async createOrderHotel(data_order, type) {
         const order = {
-            x: data_order.latitude,
-            y: data_order.longitude,
-            room_number: data_order.room_number,
+            x: Number(data_order.latitude),
+            y: Number(data_order.longitude),
+            room_number: Number(data_order.room_number),
             order_type: type,
             status_type: Status_Order.CLEANING,
             isCleaningRequested: false
@@ -19,9 +18,9 @@ class OrderService {
 
     async createOrderGetAway(data_order, type) {
         const order = {
-            x: data_order.latitude,
-            y: data_order.longitude,
-            room_number: data_order.room_number,
+            x: Number(data_order.latitude),
+            y: Number(data_order.longitude),
+            room_number: Number(data_order.room_number),
             order_type: type,
             status_type: Status_Order.CLEANING,
             isCleaningRequested: true

@@ -1,6 +1,6 @@
 import {Router} from "express";
 import OrderController from "../controllers/order-controller.js"
-
+import {OrderValidator, RoomValidator} from "../validators/room-validator.js"
 
 const router = Router()
 
@@ -25,7 +25,7 @@ const router = Router()
  *             schema:
  *               $ref: '#/components/schemas/ResHotelOrder'
  */
-router.post("/gatewayOrder",OrderController.createGatewayOrder)
+router.post("/gatewayOrder", RoomValidator.isCorrectRoom(), OrderController.createGatewayOrder)
 /**
  * @openapi
  * '/hotelOrder':
@@ -47,13 +47,13 @@ router.post("/gatewayOrder",OrderController.createGatewayOrder)
  *             schema:
  *               $ref: '#/components/schemas/ResHotelOrder'
  */
-router.post("/hotelOrder",OrderController.createHotelServiceOrder)
+router.post("/hotelOrder", RoomValidator.isCorrectRoom(), OrderController.createHotelServiceOrder)
 /**
  * @openapi
- * '/hotelOrder':
+ * '/cleanRoom':
  *  patch:
  *     tags:
- *     - Order
+ *     - Room
  *     summary: Change order status to complete
  *     requestBody:
  *      required: true
@@ -69,7 +69,7 @@ router.post("/hotelOrder",OrderController.createHotelServiceOrder)
  *             schema:
  *               $ref: '#/components/schemas/ResHotelOrder'
  */
-router.patch("/hotelOrder",OrderController.changeStatusToCompleted)
+router.patch("/cleanRoom", OrderValidator.isUuid(), OrderController.changeStatusToCompleted)
 /**
  * @openapi
  * '/orders':
